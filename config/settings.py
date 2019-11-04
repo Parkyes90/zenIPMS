@@ -36,9 +36,9 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = ["rest_framework"]
+THIRD_PARTY_APPS = ["rest_framework", "rest_framework.authtoken"]
 
-LOCAL_APPS = ["core", "renders"]
+LOCAL_APPS = ["core", "renders", "users"]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -120,3 +120,6 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static", "build", "static")]
+
+
+AUTH_USER_MODEL = "users.User"
