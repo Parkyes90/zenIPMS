@@ -6,9 +6,13 @@
     "@types/jest": "24.0.21",
     "@types/node": "12.12.5",
     "@types/react-dom": "16.9.3",
+    "@types/react-redux": "^7.1.5",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-scripts": "3.2.0"
+    "react-redux": "^7.1.1",
+    "react-scripts": "3.2.0",
+    "redux": "^4.0.4",
+    "redux-saga": "^1.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -42,6 +46,7 @@
     "eslint-loader": "^3.0.2",
     "eslint-plugin-prettier": "^3.1.1",
     "prettier": "^1.18.2",
+    "redux-devtools-extension": "^2.13.8",
     "tslint": "^6.0.0-beta0",
     "typescript": "^3.6.4"
   }
