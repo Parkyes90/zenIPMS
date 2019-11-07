@@ -1,17 +1,12 @@
 import { combineReducers } from 'redux';
-import numberCollectionReducer, {
-  NumberCollectionState,
-} from './numberCollection.reducer';
-import counterReducer, { CounterState } from '../reducers/counter.reducer';
+import todosReducer, { TodosState } from './todos';
 
 export interface State {
-  numberCollectionReducer: NumberCollectionState;
-  counterReducer: CounterState;
+  todosReducer: TodosState;
 }
 
 const rootReducer = combineReducers<State>({
-  numberCollectionReducer,
-  counterReducer,
+  todosReducer,
 });
 
 export default rootReducer;
