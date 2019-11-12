@@ -1,14 +1,8 @@
 import React from 'react';
-import TodoInsert from './components/TodoInsert';
-import TodoList from './components/TodoList';
+import MainPage from './pages/MainPage';
 
 const App: React.FC = () => {
-  return (
-    <>
-      <TodoInsert />
-      <TodoList />
-    </>
-  );
+  return <MainPage />;
 };
 
 export default App;
