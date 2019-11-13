@@ -1,4 +1,4 @@
-interface MenuProperty {
+export interface MenuProperty {
   id: string;
   title: string;
   type: string;
