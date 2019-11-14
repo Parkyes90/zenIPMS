@@ -3,24 +3,27 @@ export interface MenuProperty {
   title: string;
   type: string;
   icon?: string;
+  badge?: Badge;
 }
 
-interface Badge {
+export interface Badge {
   title: string;
   type: string;
 }
 
-interface MenuChild extends MenuProperty {
+export interface MenuChild extends MenuProperty {
+  external?: boolean;
+  target?: string;
   url: string;
-  badge?: Badge;
+  children?: MenuChild[];
 }
 
-interface MenuParent extends MenuProperty {
+export interface MenuParent extends MenuProperty {
   children: MenuChild[];
 }
 
-interface MenuModule extends MenuProperty {
-  children: MenuParent[] | MenuChild[];
+export interface MenuModule extends MenuProperty {
+  children: MenuParent[];
 }
 
 export type Menu = {

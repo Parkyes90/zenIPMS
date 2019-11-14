@@ -1,11 +1,9 @@
 import React from 'react';
+import { Badge } from 'routes/menu';
 
 interface Props {
   item: {
-    badge?: {
-      type: string;
-      title: string;
-    };
+    badge?: Badge;
   };
 }
 
