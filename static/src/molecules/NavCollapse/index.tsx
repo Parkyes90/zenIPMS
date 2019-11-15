@@ -17,7 +17,7 @@ interface Props {
   isOpen: string[];
   isTrigger: string[];
   toggleCls: string;
-  activeToggle: boolean;
+  activeToggle: string[];
   collapesTitle: string;
   chaildLi: string;
   chaildLiA: string;

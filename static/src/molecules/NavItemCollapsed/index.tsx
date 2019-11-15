@@ -37,7 +37,7 @@ class NavItemCollapsed extends Component<Props & WindowSizeProps> {
     } else {
       subContent = (
         <NavLink
-          to={this.props.item.url}
+          to={'#'}
           className={this.props.LiClassA ? this.props.LiClassA : undefined}
           exact={true}
           target={itemTarget}

@@ -3,6 +3,7 @@ export interface MenuProperty {
   title: string;
   type: string;
   icon?: string;
+  url?: string;
   badge?: Badge;
 }
 
@@ -14,7 +15,6 @@ export interface Badge {
 export interface MenuChild extends MenuProperty {
   external?: boolean;
   target?: string;
-  url: string;
   children?: MenuChild[];
 }
 
