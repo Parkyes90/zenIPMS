@@ -1,4 +1,4 @@
-interface Configure {
+export interface Configure {
   basename: string;
   defaultPath: string;
   collapseMenu: boolean;

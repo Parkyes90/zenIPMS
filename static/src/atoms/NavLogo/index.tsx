@@ -3,7 +3,12 @@ import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import { configure } from 'configure';
 
-const NavLogo: React.FC = () => (
+interface Props {
+  collapseMenu: boolean;
+  doCollapseMenu: () => void;
+}
+
+const NavLogo: React.FC<Props> = (props: Props) => (
   <div className="navbar-brand header-logo">
     <Link to={configure.defaultPath} className="b-brand">
       <div className="b-bg">Z</div>
@@ -11,11 +16,9 @@ const NavLogo: React.FC = () => (
     </Link>
     <Link
       to="#"
-      onClick={() => {
-        console.log('collapse');
-      }}
+      onClick={props.doCollapseMenu}
       className={classnames('mobile-menu', {
-        on: false,
+        on: props.collapseMenu,
       })}
     >
       <span />
