@@ -1,19 +1,25 @@
 import React, { Component, ReactElement } from 'react';
-import windowSize, { WindowSizeProps } from 'react-window-size';
 import NavIcon from 'atoms/NavIcon';
 import NavBadge from 'atoms/NavBadge';
 import NavMainContent from 'molecules/NavMainContent';
-import { NavLink } from 'react-router-dom';
+import { NavLink, RouteComponentProps, withRouter } from 'react-router-dom';
 import { MenuChild } from '../../routes/menu';
+import { leaveContent, updateText } from '../../reducers/navigation';
+import { onItemClick } from '../../reducers/configure';
+import withSizes, { Sizes } from 'react-sizes';
+import { connect } from 'react-redux';
 
-interface Props {
+interface Props extends Sizes {
   LiClassA: string;
   LiClass: string;
   layout: string;
   item: MenuChild;
+  onItemClick: () => void;
+  updateText: (title: string | ReactElement) => void;
+  leaveContent: () => void;
 }
 
-class NavItem extends Component<Props & WindowSizeProps> {
+class NavItem extends Component<Props & RouteComponentProps> {
   render(): ReactElement {
     let itemTitle: string | ReactElement = this.props.item.title;
     if (this.props.item.icon) {
@@ -41,10 +47,11 @@ class NavItem extends Component<Props & WindowSizeProps> {
     } else {
       subContent = (
         <NavLink
-          to={'#'}
+          to={`${this.props.item.url}`}
           className={this.props.LiClassA ? this.props.LiClassA : undefined}
           exact={true}
           target={itemTarget}
+          onClick={(): void => this.props.updateText(itemTitle)}
         >
           <NavIcon item={this.props.item} />
           {itemTitle}
@@ -56,11 +63,23 @@ class NavItem extends Component<Props & WindowSizeProps> {
       <NavMainContent
         LiClass={this.props.LiClass}
         layout={this.props.layout}
-        windowWidth={this.props.windowWidth}
+        windowWidth={this.props.width}
         subContent={subContent}
+        leaveContent={this.props.leaveContent}
+        onItemClick={this.props.onItemClick}
       />
     );
   }
 }
+const mapDispatchToProps = {
+  leaveContent,
+  onItemClick,
+  updateText,
+};
 
-export default windowSize(NavItem);
+const mapSizesToProps = (sizes: Partial<Sizes>): Partial<Sizes> => sizes;
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(withSizes<Partial<Sizes>, Props>(mapSizesToProps)(withRouter(NavItem)));

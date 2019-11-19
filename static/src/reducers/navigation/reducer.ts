@@ -19,7 +19,6 @@ const navigation = createReducer<NavigationState, NavigationAction>(
     [TOGGLE_COLLAPSE]: (state, { payload: { id, menu } }) => {
       const { isOpen, isTrigger } = state;
       const triggerIndex = isTrigger.indexOf(id);
-
       if (menu === 'sub') {
         if (triggerIndex > -1) {
           return {

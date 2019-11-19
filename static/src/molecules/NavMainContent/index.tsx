@@ -1,20 +1,26 @@
 import React, { ReactNode } from 'react';
+import { onItemClick } from '../../reducers/configure';
 
 interface Props {
   LiClass: string;
   layout: string;
   windowWidth: number;
   subContent: ReactNode;
+  onItemClick: () => void;
+  leaveContent: () => void;
 }
 
 const NavMainContent: React.FC<Props> = (props: Props) => {
   let MainContent;
   if (props.layout === 'horizontal') {
-    MainContent = <li>{props.subContent}</li>;
+    MainContent = <li onClick={props.leaveContent}>{props.subContent}</li>;
   } else {
     if (props.windowWidth < 992) {
       MainContent = (
-        <li className={props.LiClass ? props.LiClass : undefined}>
+        <li
+          className={props.LiClass ? props.LiClass : undefined}
+          onClick={props.onItemClick}
+        >
           {props.subContent}
         </li>
       );

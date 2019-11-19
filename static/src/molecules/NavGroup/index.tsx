@@ -15,9 +15,6 @@ interface Props {
   chaildLi: string;
   chaildLiA: string;
   subUi: string;
-  navCollapseToggle: (id: string, type: string) => void;
-  navCollapseLeave: (id: string, type: string) => void;
-  navContentLeave: () => void;
   isOpen: string[];
   isTrigger: string[];
   group: MenuModule;
@@ -63,6 +60,8 @@ class NavGroup extends Component<Props> {
                 layout={props.layout}
                 key={item.id}
                 item={item}
+                width={0}
+                height={0}
                 LiClass={parentLi}
                 LiClassA={parentLiA}
                 {...this.props}

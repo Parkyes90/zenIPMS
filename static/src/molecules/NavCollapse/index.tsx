@@ -5,17 +5,23 @@ import NavItemCollapsed from 'molecules/NavItemCollapsed';
 import LoopNavCollapse from 'molecules/NavCollapse';
 import { MenuChild, MenuParent } from 'routes/menu';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import {
+  Collapse,
+  leaveCollapse,
+  leaveContent,
+  NavigationState,
+  toggleCollapse,
+} from 'reducers/navigation';
 
 interface Props {
   type: string;
   layout: string;
   id: string;
   collapse: MenuParent | MenuChild;
-  navCollapseToggle: (id: string, type: string) => void;
-  navCollapseLeave: (id: string, type: string) => void;
-  navContentLeave: () => void;
-  isOpen: string[];
-  isTrigger: string[];
+  toggleCollapse: (payload: Collapse) => void;
+  leaveCollapse: (payload: Collapse) => void;
+  leaveContent: () => void;
   toggleCls: string;
   activeToggle: string[];
   collapesTitle: string;
@@ -24,7 +30,7 @@ interface Props {
   subUi: string;
 }
 
-class NavCollapse extends Component<Props> {
+class NavCollapse extends Component<Props & NavigationState> {
   componentDidMount(): void {
     const currentIndex = document.location.pathname
       .toString()
@@ -33,16 +39,18 @@ class NavCollapse extends Component<Props> {
         return id === this.props.collapse.id;
       });
     if (currentIndex > -1) {
-      this.props.navCollapseToggle(this.props.collapse.id, this.props.type);
+      this.props.toggleCollapse({
+        id: this.props.collapse.id,
+        menu: this.props.type,
+      });
     }
 
     if (this.props.layout === 'horizontal') {
-      this.props.navContentLeave();
+      this.props.leaveContent();
     }
   }
   render(): ReactElement {
     const { isOpen, isTrigger } = this.props;
-
     let navItems;
     if (this.props.collapse.children) {
       const collapses = this.props.collapse.children;
@@ -56,11 +64,6 @@ class NavCollapse extends Component<Props> {
                 type="sub"
                 layout={this.props.layout}
                 id={item.id}
-                isOpen={isOpen}
-                navCollapseLeave={this.props.navCollapseLeave}
-                navCollapseToggle={this.props.navCollapseToggle}
-                navContentLeave={this.props.navContentLeave}
-                isTrigger={isTrigger}
                 toggleCls={this.props.toggleCls}
                 activeToggle={this.props.activeToggle}
                 collapesTitle={this.props.collapesTitle}
@@ -73,6 +76,8 @@ class NavCollapse extends Component<Props> {
             return (
               <NavItemCollapsed
                 {...this.props}
+                width={0}
+                height={0}
                 LiClass={this.props.chaildLi}
                 LiClassA={this.props.chaildLiA}
                 layout={this.props.layout}
@@ -137,7 +142,16 @@ class NavCollapse extends Component<Props> {
 
     const subContent = (
       <Fragment>
-        <Link to="#" className={navLinkClass.join(' ')}>
+        <Link
+          to="#"
+          className={navLinkClass.join(' ')}
+          onClick={(): void =>
+            this.props.toggleCollapse({
+              id: this.props.collapse.id,
+              menu: this.props.type,
+            })
+          }
+        >
           <NavIcon item={this.props.collapse} />
           {itemTitle}
         </Link>
@@ -148,7 +162,25 @@ class NavCollapse extends Component<Props> {
     );
     let mainContent;
     if (this.props.layout === 'horizontal') {
-      mainContent = <li className={navItemClass.join(' ')}>{subContent}</li>;
+      mainContent = (
+        <li
+          onMouseLeave={(): void =>
+            this.props.leaveCollapse({
+              id: this.props.collapse.id,
+              menu: this.props.type,
+            })
+          }
+          onMouseEnter={(): void =>
+            this.props.toggleCollapse({
+              id: this.props.collapse.id,
+              menu: this.props.type,
+            })
+          }
+          className={navItemClass.join(' ')}
+        >
+          {subContent}
+        </li>
+      );
     } else {
       mainContent = <li className={navItemClass.join(' ')}>{subContent}</li>;
     }
@@ -156,4 +188,21 @@ class NavCollapse extends Component<Props> {
   }
 }
 
-export default NavCollapse;
+const mapStateToProps = ({
+  navigationReducer,
+}: {
+  navigationReducer: NavigationState;
+}): NavigationState => {
+  return { ...navigationReducer };
+};
+
+const mapDisPatchToProps = {
+  leaveContent,
+  leaveCollapse,
+  toggleCollapse,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDisPatchToProps,
+)(NavCollapse);

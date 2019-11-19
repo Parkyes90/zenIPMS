@@ -4,14 +4,12 @@ import SideBar from 'organisms/SideBar';
 const MainPage: React.FC = () => (
   <>
     <SideBar
-      type="sideBar"
+      type="sub"
       id="sideBar"
       chaildLi=""
       width={0}
       height={0}
       chaildLiA=""
-      navCollapseToggle={(id: string, type: string) => console.log(id, type)}
-      navCollapseLeave={(id: string, type: string) => console.log(id, type)}
     />
   </>
 );

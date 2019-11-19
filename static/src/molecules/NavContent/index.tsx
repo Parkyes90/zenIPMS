@@ -15,9 +15,6 @@ interface Props {
   chaildLi: string;
   chaildLiA: string;
   subUi: string;
-  navCollapseToggle: (id: string, type: string) => void;
-  navCollapseLeave: (id: string, type: string) => void;
-  navContentLeave: () => void;
   isOpen: string[];
   isTrigger: string[];
   navigation: Menu;

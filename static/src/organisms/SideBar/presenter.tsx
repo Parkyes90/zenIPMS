@@ -17,8 +17,6 @@ interface Props extends Sizes, NavigationState, ConfigureState {
   id: string;
   chaildLi: string;
   chaildLiA: string;
-  navCollapseToggle: (id: string, type: string) => void;
-  navCollapseLeave: (id: string, type: string) => void;
   navContentLeave: () => void;
   doCollapseMenu: () => void;
 }
