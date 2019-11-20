@@ -31,7 +31,7 @@ export const configure: Configure = {
   collapseMenu: false,
   layout: 'vertical', // vertical, horizontal
   layoutType: 'default', // default, light, dark
-  prebuildLayout: 'null', // layout-2, layout-3,layout-4,layout-5,layout-6,layout-7,layout-8,layout-9,layout-10,layout-11,layout-12
+  prebuildLayout: '', // layout-2, layout-3,layout-4,layout-5,layout-6,layout-7,layout-8,layout-9,layout-10,layout-11,layout-12
   iconColor: false,
   menuFixed: true,
   fixedHeader: true,

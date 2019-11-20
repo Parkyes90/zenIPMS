@@ -11,6 +11,7 @@ import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
 import { ConfigureState, collapseMenu } from 'reducers/configure';
 import { connect } from 'react-redux';
 import { NavigationState, leaveContent } from 'reducers/navigation';
+import { preBuild } from '../../utils/prebuild';
 
 interface Props extends Sizes, NavigationState, ConfigureState {
   type: string;
@@ -140,7 +141,6 @@ const SideBar: React.FC<Props & RouteComponentProps> = (
       </PerfectScrollbar>
     );
   }
-
   return (
     <Nav {...props}>
       <NavWrapper prebuildLayout={props.prebuildLayout}>
@@ -163,7 +163,11 @@ const mapStateToProps = ({
   configureReducer: ConfigureState;
   navigationReducer: NavigationState;
 }): ConfigureState & NavigationState => {
-  return { ...configureReducer, ...navigationReducer };
+  return {
+    ...configureReducer,
+    ...navigationReducer,
+    prebuildLayout: preBuild(configureReducer.prebuildLayout),
+  };
 };
 
 const mapDispatchToProps = {
