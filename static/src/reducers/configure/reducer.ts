@@ -188,9 +188,9 @@ const configureReducer = createReducer<ConfigureState, ConfigureAction>(
         menuBg: '',
       };
     },
-    [actions.RESET]: (state) => {
+    [actions.RESET]: () => {
       return {
-        ...state,
+        ...initialState,
       };
     },
   },

@@ -5,7 +5,7 @@ import { configBlock, ConfigureState } from 'reducers/configure';
 import Header from 'organisms/Header';
 import Footer from '../../organisms/Footer';
 import ContentWrapper from '../../organisms/ContentWrapper';
-import ThemeSetting from '../../organisms/ThemeSetting/presenter';
+import ThemeSetting from '../../organisms/ThemeSetting';
 
 interface Props extends ConfigureState {
   doConfigBlock: () => void;

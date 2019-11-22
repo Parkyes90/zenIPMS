@@ -2577,12 +2577,11 @@ $style-block-width: 400px;
     $i: 1;
     @while $i<=5 {
       > a[data-value='navbar-image-#{$i}'] {
-        background-image: url('/assets/images/nav-bg/navbar-img-#{$i}.jpg');
+        background-image: url('../../../../assets/images/nav-bg/navbar-img-#{$i}.jpg');
       }
       $i: $i + 1;
     }
   }
-
   &.navbar-pattern {
     > a {
       background-size: auto;
@@ -2594,7 +2593,7 @@ $style-block-width: 400px;
     $i: 1;
     @while $i<=6 {
       > a[data-value='navbar-pattern-#{$i}'] {
-        background-image: url('/assets/images/bg-images/#{$i}.jpg');
+        background-image: url('../../../../assets/images/bg-images/#{$i}.jpg');
       }
       $i: $i + 1;
     }
@@ -3510,7 +3509,7 @@ body {
 
 body.box-layout {
   position: static;
-  background-image: url('/assets/images/bg-images/5.jpg');
+  background-image: url('../../../../assets/images/bg-images/5.jpg');
   background-size: auto;
   background-attachment: fixed;
 
@@ -3718,7 +3717,7 @@ body.box-layout {
   $i: 1;
   @while $i<=5 {
     &.navbar-image-#{$i} {
-      background-image: url('/assets/images/nav-bg/navbar-img-#{$i}.jpg');
+      background-image: url('../../../../assets/images/nav-bg/navbar-img-#{$i}.jpg');
     }
     $i: $i + 1;
   }
@@ -3755,7 +3754,7 @@ body.box-layout {
   $i: 1;
   @while $i<=6 {
     &.navbar-pattern-#{$i} {
-      background-image: url('/assets/images/bg-images/#{$i}.jpg');
+      background-image: url('../../../../assets/images/bg-images/#{$i}.jpg');
     }
     $i: $i + 1;
   }
@@ -3992,23 +3991,23 @@ body.box-layout {
     }
 
     > a[data-value='navbar-image-1'] {
-      background-image: url('/assets/images/nav-bg/navbar-img-1.jpg');
+      background-image: url('../../../../assets/images/nav-bg/navbar-img-1.jpg');
     }
 
     > a[data-value='navbar-image-2'] {
-      background-image: url('/assets/images/nav-bg/navbar-img-2.jpg');
+      background-image: url('../../../../assets/images/nav-bg/navbar-img-2.jpg');
     }
 
     > a[data-value='navbar-image-3'] {
-      background-image: url('/assets/images/nav-bg/navbar-img-3.jpg');
+      background-image: url('../../../../assets/images/nav-bg/navbar-img-3.jpg');
     }
 
     > a[data-value='navbar-image-4'] {
-      background-image: url('/assets/images/nav-bg/navbar-img-4.jpg');
+      background-image: url('../../../../assets/images/nav-bg/navbar-img-4.jpg');
     }
 
     > a[data-value='navbar-image-5'] {
-      background-image: url('/assets/images/nav-bg/navbar-img-5.jpg');
+      background-image: url('../../../../assets/images/nav-bg/navbar-img-5.jpg');
     }
   }
 
@@ -4039,7 +4038,7 @@ body.box-layout {
     $i: 1;
     @while $i<=6 {
       > a[data-value='navbar-pattern-#{$i}'] {
-        background-image: url('/assets/images/bg-images/#{$i}.jpg');
+        background-image: url('../../../../assets/images/bg-images/#{$i}.jpg');
       }
       $i: $i + 1;
     }
@@ -5507,7 +5506,7 @@ body {
       @while $i<=5 {
         &.navbar-image-#{$i} {
           .navbar-content {
-            background-image: url('/assets/images/nav-bg/navbar-img-#{$i}.jpg');
+            background-image: url('../../../../assets/images/nav-bg/navbar-img-#{$i}.jpg');
           }
         }
         $i: $i + 1;
@@ -5549,7 +5548,7 @@ body {
       @while $i<=6 {
         &.navbar-pattern-#{$i} {
           .navbar-content {
-            background-image: url('/assets/images/bg-images/#{$i}.jpg');
+            background-image: url('../../../../assets/images/bg-images/#{$i}.jpg');
           }
         }
         $i: $i + 1;
