@@ -5,6 +5,7 @@ export interface MenuProperty {
   icon?: string;
   url?: string;
   badge?: Badge;
+  breadcrumbs?: boolean;
 }
 
 export interface Badge {
