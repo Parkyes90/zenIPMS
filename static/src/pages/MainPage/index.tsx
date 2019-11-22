@@ -3,12 +3,15 @@ import SideBar from 'organisms/SideBar';
 import { connect } from 'react-redux';
 import { configBlock, ConfigureState } from 'reducers/configure';
 import Header from 'organisms/Header';
+import Footer from '../../organisms/Footer';
+import ContentWrapper from '../../organisms/ContentWrapper';
+import ThemeSetting from '../../organisms/ThemeSetting/presenter';
 
-interface Props extends Partial<ConfigureState> {
+interface Props extends ConfigureState {
   doConfigBlock: () => void;
 }
 
-const MainPage: React.FC<Props> = () => (
+const MainPage: React.FC<Props> = (props: Props) => (
   <>
     <SideBar
       type="sub"
@@ -19,6 +22,12 @@ const MainPage: React.FC<Props> = () => (
       chaildLiA=""
     />
     <Header width={0} height={0} />
+    <ContentWrapper
+      prebuildLayout={props.prebuildLayout}
+      layout={props.layout}
+    />
+    {props.configBlock && <ThemeSetting />}
+    <Footer />
   </>
 );
 
@@ -26,9 +35,8 @@ const mapStateToProps = ({
   configureReducer,
 }: {
   configureReducer: ConfigureState;
-}): Partial<ConfigureState> => ({
-  layout: configureReducer.layout,
-  configBlock: configureReducer.configBlock,
+}): ConfigureState => ({
+  ...configureReducer,
 });
 
 const mapDispatchToProps = {

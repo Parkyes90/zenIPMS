@@ -31,7 +31,7 @@ class Breadcrumb extends Component<{}, State> {
     });
   }
 
-  componentWillReceiveProps(): void {
+  UNSAFE_componentWillReceiveProps(): void {
     menu.items.forEach((item) => {
       if (item.type && item.type === 'group') {
         this.getCollapse(item);
